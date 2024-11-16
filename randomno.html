@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* Body background styling */
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          color: #ffffff;
+          background-image: url(https://variety.com/wp-content/uploads/2023/08/159810_40946-e1692394157916.jpg);
+          background-size: cover;
+          background-position: center;
+      }
+
+      /* Centered container styling */
+      .game {
+          text-align: center;
+          background-color: rgba(59, 63, 71, 0.9); /* semi-transparent overlay */
+          background-image: url(https://i.pinimg.com/236x/04/ab/14/04ab14249cd3b2b2813443a76d7a9813.jpg);
+          background-size: cover;
+          background-position: center;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          width: 300px;
+          height: 300px;
+      }
+
+      /* Header styling */
+      h1 {
+          font-size: 24px;
+          margin-bottom: 20px;
+          color: white;
+      }
+
+      /* Input styling */
+      input[type="text"] {
+          width: 80%;
+          padding: 10px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          margin-bottom: 15px;
+          text-align: center;
+      }
+
+      /* Button styling */
+      button {
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #ffffff;
+          background-color: #4caf50;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 10px;
+      }
+
+      button:hover {
+          background-color: #45a049;
+      }
+
+      /* Result message styling */
+      #result {
+          margin-top: 15px;
+          font-size: 18px;
+          font-weight: bold;
+          color: rgb(203, 47, 203);
+      }
+
+  </style>
+</head>
+<body>
+   <div class="game">
+    <h1>GUESS THE NUMBER</h1>
+    <input type="text" id="guess">
+    <button onclick="guessNumber()">GO</button>
+    <p id="result">RESULT</p>
+   </div>
+    <script>
+        let randomNumber = Math.floor(Math.random()*10)+1;
+        let count = 0;
+
+        function guessNumber(){
+     let userInput = document.getElementById("guess").value;
+     if( userInput < 0 || userInput > 10){
+        alert("Invalid!! Try Again")
+     }
+     count++;
+     if(userInput == randomNumber){
+        document.getElementById('result').innerHTML="Congratulations! You guessed the number in" + count + " attempts";
+     } else if(userInput < randomNumber){
+        document.getElementById("result").innerHTML = "Too Low! Try again";
+     }else if(userInput > randomNumber){
+        document.getElementById("result").innerHTML = "Too High! Try again";
+     }
+     if(count > 6){
+        document.getElementById("result").innerHTML = "Failed";
+     }
+        }
+    </script>
+</body>
+</html>
